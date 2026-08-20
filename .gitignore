@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.conda/
+
+# Environment variables — never commit your API key
+.env
+*.env
+
+# Database — contains scraped data, not tracked
+data/valorant.db
+
+# Charts — generated outputs, not tracked
+data/*.png
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
