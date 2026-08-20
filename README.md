@@ -6,19 +6,19 @@ Built using data from **LATAM Radiant-tier players** during **V26 Act I (e11a4)*
 
 ---
 
-## Key Findings (V26 Act I — LATAM Radiant, ~2,600 matches)
+## Key Findings (V26 Act I — LATAM Radiant, ~7,000 matches, 200 players)
 
-| Map     | Attacker WR | Defender WR | Difference | Classification     | Odds Ratio | p-value |
-|---------|-------------|-------------|------------|--------------------|------------|---------|
-| Ascent  | 55.7%       | 43.2%       | +12.5pp    | **ATTACKER-sided** | 1.653      | 0.019 ✓ |
-| Breeze  | 53.6%       | 44.3%       | +9.3pp     | **ATTACKER-sided** | 1.451      | 0.068   |
-| Haven   | 52.1%       | 46.4%       | +5.7pp     | **ATTACKER-sided** | 1.258      | 0.262   |
-| Lotus   | 51.6%       | 47.4%       | +4.2pp     | Balanced           | 1.184      | 0.412   |
-| Sunset  | 51.0%       | 46.9%       | +4.1pp     | Balanced           | 1.180      | 0.417   |
-| Summit  | 49.8%       | 49.2%       | +0.5pp     | Balanced           | 1.021      | 0.920   |
-| Split   | 49.5%       | 50.0%       | -0.5pp     | Balanced           | 0.979      | 0.917   |
+| Map    | Attacker WR | Defender WR | Difference | Classification     | Odds Ratio | p-value  |
+|--------|-------------|-------------|------------|--------------------|------------|----------|
+| Lotus  | 54.9%       | 43.7%       | +11.2pp    | **ATTACKER-sided** | 1.567      | 0.0005 ✓ |
+| Breeze | 52.5%       | 46.0%       | +6.5pp     | **ATTACKER-sided** | 1.298      | 0.038 ✓  |
+| Haven  | 49.9%       | 48.3%       | +1.6pp     | Balanced           | 1.065      | 0.615    |
+| Ascent | 50.1%       | 48.7%       | +1.4pp     | Balanced           | 1.059      | 0.654    |
+| Split  | 49.6%       | 49.0%       | +0.6pp     | Balanced           | 1.024      | 0.851    |
+| Sunset | 48.7%       | 49.7%       | -1.0pp     | Balanced           | 0.960      | 0.748    |
+| Summit | 48.0%       | 50.7%       | -2.7pp     | Balanced           | 0.897      | 0.382    |
 
-> **Ascent** is the only map with a statistically significant side bias (p < 0.05). Attackers are **1.65× more likely to win** on Ascent at Radiant LATAM level — notably diverging from the global average (45.9% attacker WR), suggesting a rank and region-specific meta effect.
+> **Lotus** and **Breeze** are the only maps with statistically significant attacker-side bias (p < 0.05). Notably, an earlier finding showing Ascent as significant (OR = 1.65, p = 0.025) at n = 2,600 did not hold at scale (OR = 1.06, p = 0.65, n = 7,000) — a false positive corrected by increased sample size.
 
 ---
 
@@ -128,8 +128,11 @@ For each map, attacker and defender win rates are computed and compared against 
 
 **Logistic regression (sklearn)** — trained on `[map, side]` to predict outcomes. Accuracy near 50% is expected given VALORANT's design for balance; the value lies in the coefficients and per-map tests above.
 
-### 4. Why accuracy ≈ 52% is not a failure
+### 4. Why accuracy ≈ 51% is not a failure
 VALORANT is balanced by design — the model's feature set (map + side) explains only a fraction of match variance. The meaningful outputs are the **odds ratios and p-values**, not classification accuracy. This is consistent with how side-bias is analyzed in competitive game research.
+
+### 5. Sample size matters
+An early run on ~2,600 matches flagged Ascent as significant (p = 0.025). At 7,000 matches that signal vanished (p = 0.65), revealing it as a false positive. This project was intentionally scaled up to validate initial findings — a standard step in any rigorous statistical analysis.
 
 ---
 

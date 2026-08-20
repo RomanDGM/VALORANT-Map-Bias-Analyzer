@@ -20,8 +20,8 @@ PLATFORM = "pc"
 SEASON_SHORT = "e11a4"
 
 # Scraping parameters
-MATCH_COUNT = 20   # Matches to fetch per player (max 10 per API call, paginated)
-MAX_PLAYERS = 100  # Max players to process from the leaderboard
+MATCH_COUNT = 30   # Matches to fetch per player (max 10 per API call, paginated)
+MAX_PLAYERS = 200  # Max players to process from the leaderboard
 
 # Database path
 DB_PATH = "data/valorant.db"
