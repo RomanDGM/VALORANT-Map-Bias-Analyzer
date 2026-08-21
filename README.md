@@ -135,6 +135,7 @@ An early run on ~2,600 matches flagged Ascent as significant (p = 0.025). At 7,0
 - **Rate limit**: The free HenrikDev tier allows 30 req/min. The scraper enforces a 2s delay between calls and retries automatically on 429 responses.
 - **Data accumulation**: Re-running the scraper adds new data without duplicating existing matches. Delete `data/valorant.db` to start fresh.
 - **Season filter**: Only matches from `SEASON_SHORT` are stored. Update this value in `config.py` when a new act begins.
+- **Contact**: Any questions can be forwarded contacting romandariogm@gmail.com, yours truly :D
 
 ---
 
