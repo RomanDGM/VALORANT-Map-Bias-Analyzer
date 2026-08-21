@@ -1,12 +1,12 @@
 # VALORANT Map Bias Analyzer
 
-A data pipeline that scrapes competitive match data from the **HenrikDev VALORANT API**, stores it in SQLite, and applies **logistic regression**, **chi-square tests**, and **odds ratio analysis** to determine whether each map statistically favors the attacking or defending side.
+A data pipeline that scrapes competitive match data from the **[HenrikDev VALORANT API](https://github.com/Henrik-3/unofficial-valorant-api)**, stores it in SQLite, and applies **logistic regression**, **chi-square tests**, and **odds ratio analysis** to determine whether each map statistically favors the attacking or defending side.
 
-Built using data from **LATAM Radiant-tier players** during **V26 Act I (e11a4)**.
+Built using data from **LATAM Radiant-tier players** during **V26 Act IV (e11a4)**.
 
 ---
 
-## Key Findings (V26 Act I — LATAM Radiant, ~7,000 matches, 200 players)
+## Key Findings (V26 Act IV — LATAM Radiant, ~7,000 matches, 200 players)
 
 | Map    | Attacker WR | Defender WR | Difference | Classification     | Odds Ratio | p-value  |
 |--------|-------------|-------------|------------|--------------------|------------|----------|
@@ -61,18 +61,15 @@ pip install -r requirements.txt
 Get a free key at [https://api.henrikdev.xyz/dashboard/api-keys](https://api.henrikdev.xyz/dashboard/api-keys), then either:
 
 ```bash
-# Option A — environment variable (recommended)
 export HENRIKDEV_API_KEY=HDEV-your-key-here   # Linux/Mac
 set HENRIKDEV_API_KEY=HDEV-your-key-here      # Windows
 
-# Option B — edit config.py directly (never commit this)
-API_KEY = "HDEV-your-key-here"
 ```
 
 **4. Configure region and season in `config.py`**
 ```python
 REGION       = "latam"   # eu, na, latam, br, ap, kr
-SEASON_SHORT = "e11a4"   # e11a4 = V26 Act I
+SEASON_SHORT = "e11a4"   # e11a4 = V26 Act IV
 ```
 
 ---
@@ -80,10 +77,10 @@ SEASON_SHORT = "e11a4"   # e11a4 = V26 Act I
 ## Usage
 
 ```bash
-# Scrape top 100 leaderboard players (20 matches each)
-python main.py --leaderboard --top 100 --matches 20
+# Scrape top 200 leaderboard players (30 matches each)
+python main.py --leaderboard --top 200 --matches 30
 
-# Scrape a specific player
+# Scrape a specific player (if desired)
 python main.py --scrape PlayerName TAG
 
 # Run analysis + generate charts
@@ -126,12 +123,9 @@ For each map, attacker and defender win rates are computed and compared against 
 
 **Odds Ratio (logistic regression via statsmodels)** — quantifies *how much* attacking affects win probability, with a 95% confidence interval. An OR > 1 with CI not crossing 1 confirms a real effect.
 
-**Logistic regression (sklearn)** — trained on `[map, side]` to predict outcomes. Accuracy near 50% is expected given VALORANT's design for balance; the value lies in the coefficients and per-map tests above.
+**Logistic regression (sklearn)** — trained on `[map, side]` to predict outcomes. Accuracy near 50% is expected given VALORANT's design for balance and TOP players tending to long games or draws; the value lies in the coefficients and per-map tests above.
 
-### 4. Why accuracy ≈ 51% is not a failure
-VALORANT is balanced by design — the model's feature set (map + side) explains only a fraction of match variance. The meaningful outputs are the **odds ratios and p-values**, not classification accuracy. This is consistent with how side-bias is analyzed in competitive game research.
-
-### 5. Sample size matters
+### 4. Sample size matters
 An early run on ~2,600 matches flagged Ascent as significant (p = 0.025). At 7,000 matches that signal vanished (p = 0.65), revealing it as a false positive. This project was intentionally scaled up to validate initial findings — a standard step in any rigorous statistical analysis.
 
 ---
@@ -146,4 +140,4 @@ An early run on ~2,600 matches flagged Ascent as significant (p = 0.025). At 7,0
 
 ## Tech Stack
 
-`Python` · `SQLite` · `pandas` · `scikit-learn` · `statsmodels` · `scipy` · `matplotlib` · `HenrikDev API`
+`Python` · `SQLite` · `pandas` · `scikit-learn` · `statsmodels` · `scipy` · `matplotlib`
