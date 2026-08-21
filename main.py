@@ -1,4 +1,4 @@
-# main.py — CLI entry point for the VALORANT Map Bias Analyzer
+# CLI entry point for the VALORANT Map Bias Analyzer
 
 import argparse
 from database import init_db

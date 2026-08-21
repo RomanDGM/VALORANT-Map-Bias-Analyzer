@@ -1,4 +1,6 @@
-# analysis.py — Statistical analysis of map-side bias in VALORANT
+#Statistical analysis of map-side bias in VALORANT
+
+from ast import Load
 
 import pandas as pd
 import numpy as np
@@ -15,7 +17,7 @@ from database import get_team_results
 
 
 def load_dataframe():
-    """Load team results from the DB into a DataFrame."""
+    #Load team results from the DB into a DataFrame.
     rows = get_team_results()
     if not rows:
         raise ValueError("[Analysis] No data in the database. Run the scraper first.")
@@ -26,7 +28,7 @@ def load_dataframe():
 
 
 def compute_win_rates(df):
-    """Compute win rate per map and starting side."""
+    #Compute win rate per map and starting side.
     stats = (
         df.groupby(["map_name", "starting_side"])["won"]
         .agg(["sum", "count"])
@@ -116,7 +118,7 @@ def run_logistic_regression(df):
     print(confusion_matrix(y_test, y_pred))
     print()
 
-    # AUC-ROC — more informative than accuracy for near-random binary classification
+    # AUC-ROC
     y_prob = model.predict_proba(X_test)[:, 1]
     auc    = roc_auc_score(y_test, y_prob)
     print("=== AUC-ROC ===")

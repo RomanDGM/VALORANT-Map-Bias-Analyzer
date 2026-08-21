@@ -1,4 +1,4 @@
-# scraper.py — HenrikDev API scraper (v4)
+# HenrikDev API scraper (v4)
 # API docs: https://docs.henrikdev.xyz/valorant/api-reference
 
 import requests

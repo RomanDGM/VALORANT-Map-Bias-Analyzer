@@ -14,14 +14,14 @@ venv/
 env/
 .conda/
 
-# Environment variables — never commit your API key
+# Environment variables API key
 .env
 *.env
 
-# Database — contains scraped data, not tracked
+# Database
 data/valorant.db
 
-# Charts — generated outputs, not tracked
+# Charts
 data/*.png
 
 # IDE

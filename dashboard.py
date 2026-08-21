@@ -1,4 +1,4 @@
-# dashboard.py — Results visualization with matplotlib
+# Results visualization with matplotlib
 
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches

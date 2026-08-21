@@ -1,5 +1,5 @@
-# config.py — Global project configuration
-# !! Never commit your real API key. Use a .env file or environment variable instead.
+# Global project configuration
+# Use a .env file or environment variable for your API Key.
 
 import os
 
@@ -16,7 +16,7 @@ REGION = "latam"
 PLATFORM = "pc"
 
 # Season filter
-# e11a4 = Episode 11 Act 4 = V26 Act I (Season 2026 Act 1)
+# e11a4 = Episode 11 Act 4 = V26 Act IV (Season 2026 Act 4) more information on scraper.py.
 SEASON_SHORT = "e11a4"
 
 # Scraping parameters

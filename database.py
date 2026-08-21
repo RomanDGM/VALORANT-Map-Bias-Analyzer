@@ -1,4 +1,4 @@
-# database.py — SQLite database management
+# SQLite database management
 
 import sqlite3
 import os
